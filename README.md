@@ -28,5 +28,5 @@ Para realizar peticiones HTTPS a trav√©s de la API, se requiere una configuraci√
 Video: https://www.youtube.com/watch?v=pcbCnd_NThQ
 
 5. Arrancar Laravel y React:
-    - Inicia Laravel con el comando php artisan serve.
-    - Inicia React con el comando npm run dev.
+    - Inicia Laravel con el comando "php artisan serve".
+    - Inicia React con el comando "npm run dev".

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\JokeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,7 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 // Route to get the categories and jokes from the api
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/joke/{category}', [JokeController::class, 'getJoke']);

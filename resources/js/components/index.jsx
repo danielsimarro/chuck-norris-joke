@@ -1,23 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import GetCategories from './fetchApi/getCategories';
+import GetJokes from './fetchApi/getJokes';
 
 export default function Codea() {
 
     // Store the selected value of the child component
-    const [valorSeleccionado, setValorSeleccionado] = useState('');
+    const [selectValue, setSelectValue] = useState();
+
+    // We are going to check that if the value doesn't change and the same category is received,
+    // we will change the value of the trigger. This way, in the child component, 
+    // we can call the useEffect.
+    const [trigger, setTrigger] = useState(false);
 
     // Function to handle selection in the parent component
-    const handleSeleccion = (valor) => {
-        setValorSeleccionado(valor);
+    const onHandleSelect = (value) => {
+        if (value != selectValue) {
+            setSelectValue(value);
+        } else {
+            setTrigger((trigger) => !trigger);
+        }
     };
-
 
     return (
         <div>
-            <h1>Categorías de Chuck Norris</h1>
-            <GetCategories onSeleccion={handleSeleccion} />
-            <p>Valor seleccionado en el padre: {valorSeleccionado}</p>
+            <h1>Welcome to Chuck Norris</h1>
+            <GetCategories onHandleSelect={onHandleSelect} />
+            <p>Select value: {selectValue}</p>
+            <GetJokes selectValue={selectValue} trigger={trigger}/>
         </div>
     );
 }

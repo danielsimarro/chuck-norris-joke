@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Get Categories and return it to the parent
-export default function GetCategories({ onSeleccion }) {
+export default function GetCategories({ onHandleSelect }) {
 
     // Is a Hook that allows you to have state variables in functional components.
     const [categories, setCategories] = useState([]);
@@ -22,11 +22,11 @@ export default function GetCategories({ onSeleccion }) {
     }, []);
 
     const handleButtonSelect = () => {
-        
+
         // Get the value of the select 
         var selectElement = document.getElementById('selectCategory').value;
         // Return the value to the parent component
-        onSeleccion(selectElement);
+        onHandleSelect(selectElement);
     }
 
     return (

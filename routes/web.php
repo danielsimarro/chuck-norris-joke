@@ -16,6 +16,7 @@ use App\Http\Controllers\JokeSessionController;
 |
 */
 
+// Main route
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,12 +25,12 @@ Route::get('/', function () {
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/joke/{category}', [JokeController::class, 'getJoke']);
 
-// Ruta para almacenar las bromas en session
+// Routes for session:
+// Route to store jokes in session
 Route::post('/saveJokeSession', [JokeSessionController::class, 'saveSession']);
-
-// Ruta para obtener las bromas almacendas en sesion
+// Route to get the jokes stored in session
 Route::get('/getJokes', [JokeSessionController::class, 'getSession']);
-// Ruta para cerrar sesion
+// Route to delete session
 Route::post('/deleteJokeSession', [JokeSessionController::class, 'deleteSession']);
-// Ruta para ordenar las sesiones
+// Route to sort session
 Route::post('/sortSession', [JokeSessionController::class, 'sortSession']);

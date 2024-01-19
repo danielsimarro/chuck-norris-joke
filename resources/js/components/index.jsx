@@ -3,6 +3,11 @@ import { createRoot } from 'react-dom/client';
 import GetCategories from './fetchApi/getCategories';
 import GetJokes from './fetchApi/getJokes';
 
+/**
+ * Father of all components
+ * @param nothing
+ * @return html
+ */
 export default function Codea() {
 
     // Store the selected value of the child component
@@ -24,10 +29,9 @@ export default function Codea() {
 
     return (
         <div className='container'>
-            <h1 className='my-3'>Welcome to Chuck Norris</h1>
+            <h1 className='my-2'>Welcome to Chuck Norris</h1>
             <div className='row align-items-start'>
                     <GetCategories onHandleSelect={onHandleSelect} />
-                    <p>Select value: {selectValue}</p>
                     <GetJokes selectValue={selectValue} trigger={trigger} />
             </div>
         </div>
@@ -36,8 +40,8 @@ export default function Codea() {
 
 
 // Conditional rendering based on the existence of an element with ID 'codeareact'.
-if (document.getElementById('codeareact')) {
+if (document.getElementById('reactsComponents')) {
     // Using createRoot to create a root for a React component tree and rendering the <Codea/> component.
     // createRoot is part of the new ReactDOM client and server renderer in React 18.
-    createRoot(document.getElementById('codeareact')).render(<Codea />);
+    createRoot(document.getElementById('reactsComponents')).render(<Codea />);
 }

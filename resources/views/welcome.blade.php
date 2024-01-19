@@ -12,6 +12,6 @@
         @vite('resources/js/app.js')
     </head>
     <body>
-       <div id="codeareact"></div>
+       <div id="reactsComponents"></div>
     </body>
 </html>

@@ -7,6 +7,11 @@ use GuzzleHttp\Client;
 
 class JokeController extends Controller
 {
+    /**
+     * We access the API through the URL and return the jokes
+     * @param String $category
+     * @return list[String]
+     */
     public function getJoke($category)
     {
         // Create a new client to make web requests.

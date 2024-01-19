@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-// Get Categories and return it to the parent
+/**
+ * Get Categories and return it to the parent
+ * @param Prop $onHandleSelect
+ * @return html
+ */
 export default function GetCategories({ onHandleSelect }) {
 
     // Is a Hook that allows you to have state variables in functional components.
@@ -21,8 +25,8 @@ export default function GetCategories({ onHandleSelect }) {
         // The empty dependency array [] means this effect runs once when the component mounts.
     }, []);
 
+    // Function to pass to the parent when clicking on a category
     const handleButtonSelect = () => {
-
         // Get the value of the select 
         var selectElement = document.getElementById('selectCategory').value;
         // Return the value to the parent component

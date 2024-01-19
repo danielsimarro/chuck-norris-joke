@@ -7,6 +7,11 @@ use GuzzleHttp\Client;
 
 class CategoryController extends Controller
 {
+    /**
+     * We access the API through the URL and return the categories
+     * @param nothing
+     * @return list[String]
+     */
     public function index()
     {
         // Create a new client to make web requests.

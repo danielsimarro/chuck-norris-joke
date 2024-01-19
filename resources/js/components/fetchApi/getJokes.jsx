@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ButtonJoke from '../button/buttonJoke';
 
 export default function GetJokes({ selectValue, trigger }) {
 
@@ -18,6 +20,9 @@ export default function GetJokes({ selectValue, trigger }) {
                 .then(response => {
                     // On successful response, setCategories is called with the response data.
                     setJoke([...jokes, response.data.value]);
+                    
+                    saveJokeSession(response.data.value);
+                    
                 })
                 .catch(error => {
                     // If there's an error in fetching data, it's logged to the console.
@@ -26,19 +31,66 @@ export default function GetJokes({ selectValue, trigger }) {
         }
     }, [selectValue, trigger]);
 
+    const saveJokeSession = async (joke) => {
+        await axios.post('/saveJokeSession', {joke})
+            .then(response => {
+                console.log(response.data.message);
+                getJokeSession();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
+
+
+    const [jokeSession, setJokeSession] = useState([]);
+
+    const getJokeSession = () => {
+        // axios is used for making HTTP requests. Here, it's fetching data from a local server.
+        axios.get('http://127.0.0.1:8000/getJokes')
+            .then(response => {
+                // On successful response, setCategories is called with the response data.
+                setJokeSession(response.data);
+            })
+            .catch(error => {
+                // If there's an error in fetching data, it's logged to the console.
+                console.error('Error al obtener datos:', error);
+            });
+    }
+
+    useEffect(() => {
+        console.log('solo se mostrara una vez');
+        getJokeSession();
+    }, []);
+
+    // Function to handle selection in the parent component
+    const handleDelete = (value) => {
+        if(value){
+            getJokeSession();
+        }
+    };
+
+    // Function to handle selection in the parent component
+    const handleSort = (value) => {
+        if(value){
+            getJokeSession();
+        }
+    };
+
 
     return (
-        <div>
-            {jokes.length > 0 ? (
-                <ul>
-                    {jokes.map((joke, index) => (
-                        <li key={index}>{joke}</li>
+        <>
+            {jokeSession.length > 0 ? (
+                <ul className='list-group list-group-flush'>
+                    {jokeSession.map((joke, index) => (
+                        <li className='list-group-item' key={index}>{joke}</li>
                     ))}
                 </ul>
             ) : (
                 <p>List is empty</p>
             )}
-        </div>
+            <ButtonJoke handleDelete={handleDelete} handleSort={handleSort}/>
+        </>
     );
 }
 

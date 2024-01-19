@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\JokeController;
+use App\Http\Controllers\JokeSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,13 @@ Route::get('/', function () {
 // Route to get the categories and jokes from the api
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/joke/{category}', [JokeController::class, 'getJoke']);
+
+// Ruta para almacenar las bromas en session
+Route::post('/saveJokeSession', [JokeSessionController::class, 'saveSession']);
+
+// Ruta para obtener las bromas almacendas en sesion
+Route::get('/getJokes', [JokeSessionController::class, 'getSession']);
+// Ruta para cerrar sesion
+Route::post('/deleteJokeSession', [JokeSessionController::class, 'deleteSession']);
+// Ruta para ordenar las sesiones
+Route::post('/sortSession', [JokeSessionController::class, 'sortSession']);

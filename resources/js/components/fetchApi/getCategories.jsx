@@ -31,12 +31,16 @@ export default function GetCategories({ onHandleSelect }) {
 
     return (
         <>
-        <select id='selectCategory'>
-            {categories.map((category) => (
-                <option key={category} value={category}>{category}</option>
-            ))}
-        </select>
-        <button onClick={handleButtonSelect}>Select</button>
+            <div className='col'>
+                <select id='selectCategory' className="form-select">
+                    {categories.map((category) => (
+                        <option key={category} value={category}>{category}</option>
+                    ))}
+                </select>
+            </div>
+            <div className="col mb-2">
+                <button onClick={handleButtonSelect} className='btn btn-primary'>Select</button>
+            </div>
         </>
     );
 }

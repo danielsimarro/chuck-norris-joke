@@ -23,11 +23,13 @@ export default function Codea() {
     };
 
     return (
-        <div>
-            <h1>Welcome to Chuck Norris</h1>
-            <GetCategories onHandleSelect={onHandleSelect} />
-            <p>Select value: {selectValue}</p>
-            <GetJokes selectValue={selectValue} trigger={trigger}/>
+        <div className='container'>
+            <h1 className='my-3'>Welcome to Chuck Norris</h1>
+            <div className='row align-items-start'>
+                    <GetCategories onHandleSelect={onHandleSelect} />
+                    <p>Select value: {selectValue}</p>
+                    <GetJokes selectValue={selectValue} trigger={trigger} />
+            </div>
         </div>
     );
 }

@@ -1,32 +1,33 @@
 ## Installation
 
-1. Laravel y PHP: Asegúrate de tener instalado Laravel 10. Para ello, es necesario contar con PHP versión 8.1 o superior. Puedes verificar tu versión de PHP con el comando php -v en tu terminal.
+1. Laravel and PHP: Ensure you have Laravel 10 installed. For this, you need PHP version 8.1 or higher. You can check your PHP version with the command php -v in your terminal.
 
-2. Composer: Debes tener instalado Composer, el gestor de dependencias para PHP. Si aún no lo tienes, puedes descargarlo e instalarlo desde la página oficial de Composer.
+2. Composer: You must have Composer installed, the dependency manager for PHP. If you don't have it yet, you can download and install it from the official Composer website.
 
-3. Configuración para Peticiones HTTPS
-Para realizar peticiones HTTPS a través de la API, se requiere una configuración especial, especialmente si no dispones de un certificado SSL para tu dominio. Para un entorno de prueba, sigue estos pasos:
+3. Configuration for HTTPS Requests
+To make HTTPS requests through the API, special configuration is required, especially if you do not have an SSL certificate for your domain. For a test environment, follow these steps:
 
-    1. Descargar el Archivo de Certificados cacert.pem:
-    Visita https://curl.se/docs/caextract.html y descarga el archivo cacert.pem.
+    1. Download the cacert.pem Certificates File:
+    Visit https://curl.se/docs/caextract.html and download the cacert.pem file.Download the cacert.pem Certificates File:
 
-    2. Ubicar el Archivo cacert.pem:
-    Mueve el archivo descargado a la carpeta donde está instalado PHP en tu sistema. Por ejemplo, si tu ruta de PHP es C:\php, coloca el archivo allí.
 
-    3. Editar el Archivo php.ini:
-    Necesitarás editar tu archivo php.ini, el cual configura tu entorno PHP. Agrega o actualiza las siguientes líneas con la ruta al archivo cacert.pem:
+    2. Locate the cacert.pem File:
+    Move the downloaded file to the folder where PHP is installed on your system. For example, if your PHP path is C:\php, place the file there.
+
+    3. Edit the php.ini File:
+    You will need to edit your php.ini file, which configures your PHP environment. Add or update the following lines with the path to the cacert.pem file:
 
     curl.cainfo = "C:\php\cacert.pem"
     openssl.cafile = "C:\php\cacert.pem"
 
-    Asegúrate de reemplazar C:\php\cacert.pem con la ruta exacta donde ubicaste el archivo.
+    Make sure to replace C:\php\cacert.pem with the exact path where you placed the file.
 
-    4. Reiniciar el Servidor:
-    Una vez realizados los cambios, es importante reiniciar tu servidor web para que los cambios en php.ini tengan efecto.
+    4. Restart the Server:
+    Once the changes are made, it's important to restart your web server for the changes in php.ini to take effect.
 
-4. Instalación de React en Laravel: Puedes seguir los pasos de este video para instalar React dentro de Laravel.
+4. Installing React in Laravel: You can follow the steps in this video to install React within Laravel.
 Video: https://www.youtube.com/watch?v=pcbCnd_NThQ
 
-5. Arrancar Laravel y React:
-    - Inicia Laravel con el comando "php artisan serve".
-    - Inicia React con el comando "npm run dev".
+5. Starting Laravel and React:
+    - Start Laravel with the command "php artisan serve".
+    - Start React with the command "npm run dev".
